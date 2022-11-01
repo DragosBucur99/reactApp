@@ -1,8 +1,13 @@
-export default function Card() { 
+export default function Card(props) { 
 
     return (
-        <div className="relative flex justify-center h-screen w-full py-20 snap-start px-3 xl:h-full xl:snap-none xl:px-5">
-            <div className="bg-cardColor h-5/6 w-full rounded-lg xl:shadow-md" />
+        <div className="relative h-screen w-full py-20 px-3 xl:h-full xl:px-5">
+            <div className="h-full w-full rounded-lg xl:shadow-md xl:h-full" style={{backgroundColor: props.color}} />
         </div>
     )
+}
+
+
+Card.defaultProps = {
+    color: '#1d1d1d'
 }
