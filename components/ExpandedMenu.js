@@ -14,7 +14,7 @@ export default function ExpandedMenu(props) {
             paused: true
         })
     
-        tl.current.to(ref.current, {left: '0%', duration: 0.2})
+        tl.current.to(ref.current, {bottom: '0%', duration: 0.2})
         tl.current.to(dashbordRef.current, {top: '0%', ease: "back.out(1.7)", duration: 0.3})
         tl.current.to(contactRef.current, {top: '0%', ease: "back.out(1.7)", duration: 0.3}, '-=0.2')
         tl.current.to(logoutRef.current, {top: '0%', ease: "back.out(1.7)", duration: 0.3}, '-=0.2')
@@ -25,10 +25,10 @@ export default function ExpandedMenu(props) {
       }, [toggle]);
 
     return (
-        <div className='absolute bg-expendedMenuBackground backdrop-blur-sm w-screen h-screen z-10 left-full flex flex-col justify-center text-6xl gap-10 px-4' ref={ref}>
-            <div className="relative w-full h-20 overflow-hidden"><span className="absolute left-0 top-20" ref={dashbordRef}>Dashbord</span></div>
-            <div className="relative w-full h-20 overflow-hidden"><span className="absolute left-0 top-20" ref={contactRef}>Contact</span></div>
-            <div className="relative w-full h-20 overflow-hidden"><span className="absolute left-0 top-20" ref={logoutRef}>Log out</span></div>
+            <div className='absolute bg-red-400 backdrop-blur-sm w-full h-screen z-10 bottom-full flex flex-col justify-center text-6xl gap-10 px-4' ref={ref}>
+                <div className="relative w-full h-20 overflow-hidden"><span className="absolute left-0 top-20" ref={dashbordRef}>Dashbord</span></div>
+                <div className="relative w-full h-20 overflow-hidden"><span className="absolute left-0 top-20" ref={contactRef}>Contact</span></div>
+                <div className="relative w-full h-20 overflow-hidden"><span className="absolute left-0 top-20" ref={logoutRef}>Log out</span></div>
         </div>
     )
 }
