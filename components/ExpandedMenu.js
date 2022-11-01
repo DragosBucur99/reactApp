@@ -25,7 +25,7 @@ export default function ExpandedMenu(props) {
       }, [toggle]);
 
     return (
-            <div className='absolute bg-expendedMenuBackground backdrop-blur-sm w-full h-screen z-10 bottom-full flex flex-col justify-center text-6xl gap-10 px-4' ref={ref}>
+            <div className='fixed bg-expendedMenuBackground backdrop-blur-sm w-full h-screen z-10 bottom-full flex flex-col justify-center text-6xl gap-10 px-4' ref={ref}>
                 <div className="relative w-full h-20 overflow-hidden"><span className="absolute left-0 top-20" ref={dashbordRef}>Dashbord</span></div>
                 <div className="relative w-full h-20 overflow-hidden"><span className="absolute left-0 top-20" ref={contactRef}>Contact</span></div>
                 <div className="relative w-full h-20 overflow-hidden"><span className="absolute left-0 top-20" ref={logoutRef}>Log out</span></div>
