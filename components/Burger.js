@@ -28,8 +28,8 @@ useEffect(() => {
   }, [click]);
 
     return (
-        <div className="w-full" style={{"height": "8%"}}>
-            <div className="fixed w-full flex top-0 z-10 items-center justify-end px-4 xl:hidden" style={{"height": "8%"}}>
+        <div className="w-full lg:hidden" style={{"height": "8%"}}>
+            <div className="fixed w-full flex top-0 z-10 items-center justify-end px-4 lg:hidden" style={{"height": "8%"}}>
                 <ExpandedMenu toggle={click} />
                 <div className='z-20 w-8 h-8 cursor-pointer flex justify-center items-center' onClick={handleClick}>
                     <div className="relative w-full h-full flex flex-col justify-center items-center gap-2" ref={toggleDisplay}>
