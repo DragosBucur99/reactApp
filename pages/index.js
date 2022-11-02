@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Card from '../components/Card'
+import CardsLayout from '../components/CardsLayout'
 import Dots from '../components/Dots'
 import Burger from '../components/Burger'
 import { useState, useRef, useEffect } from "react"
@@ -14,10 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Burger />
-      <div className='snap-mandatory snap-y flex flex-col h-screen w-full mx-auto overflow-scroll'>
-        <Card />
-        <Card />
-        <Card />
+      <div>
+        <CardsLayout />
       </div>
     </div>
   )
