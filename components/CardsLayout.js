@@ -1,10 +1,11 @@
+
 export default function CardsLayout(props) { 
 
     return (
-        <div className="snap-mandatory snap-y gap-20 px-5 py-20 flex flex-col h-screen w-full mx-auto overflow-scroll"> 
-            <div className="snap-center snap-always shrink-0 w-full rounded-lg xl:shadow-md xl:h-full" style={{backgroundColor: props.color, height: '90%'}} />
-            <div className="snap-center snap-always shrink-0 w-full rounded-lg xl:shadow-md xl:h-full" style={{backgroundColor: props.color, height: '90%'}} />
-            <div className="snap-center snap-always shrink-0 w-full rounded-lg xl:shadow-md xl:h-full" style={{backgroundColor: props.color, height: '90%'}} />
+        <div className="flex-1 relative snap-mandatory snap-y px-4 flex flex-col h-1/2 w-full mx-auto overflow-scroll overflow-y-scroll gap-10">
+            <div className="snap-start snap-always shrink-0 w-full rounded-lg h-5/6 xl:shadow-md xl:h-full" style={{backgroundColor: props.color}} />
+            <div className="snap-start snap-always shrink-0 w-full rounded-lg h-5/6 xl:shadow-md xl:h-full" style={{backgroundColor: props.color}} />
+            <div className="snap-start snap-always shrink-0 w-full rounded-lg h-5/6 xl:shadow-md xl:h-full" style={{backgroundColor: props.color}} />
         </div>
     )
 }
