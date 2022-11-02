@@ -28,17 +28,18 @@ useEffect(() => {
   }, [click]);
 
     return (
-        <div className="w-full xl:hidden">
-             <ExpandedMenu toggle={click} />
-            <div className='fixed w-8 h-8 top-4 right-5 z-10 cursor-pointer flex justify-center items-center' onClick={handleClick}>
-                <div className="relative w-full h-full flex flex-col justify-center items-center gap-2" ref={toggleDisplay}>
-                    <div className="w-full h-0.5 bg-stone-100 z-20 origin-center" ref={upperLine}></div>
-                    <div className="w-full h-0.5 bg-stone-100 z-20 origin-center" ref={middleLine}></div>
-                    <div className="w-full h-0.5 bg-stone-100 z-20 origin-center" ref={lowerLine}></div>
+        <div className="w-full" style={{"height": "8%"}}>
+            <div className="fixed w-full flex top-0 z-10 items-center justify-end px-4 xl:hidden" style={{"height": "8%"}}>
+                <ExpandedMenu toggle={click} />
+                <div className='z-20 w-8 h-8 cursor-pointer flex justify-center items-center' onClick={handleClick}>
+                    <div className="relative w-full h-full flex flex-col justify-center items-center gap-2" ref={toggleDisplay}>
+                        <div className="w-full h-0.5 bg-stone-100 origin-center" ref={upperLine}></div>
+                        <div className="w-full h-0.5 bg-stone-100 origin-center" ref={middleLine}></div>
+                        <div className="w-full h-0.5 bg-stone-100 origin-center" ref={lowerLine}></div>
+                    </div>
                 </div>
             </div>
         </div>
-        
     )
 
     function handleClick() {
