@@ -20,3 +20,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.hideScrollbar {
+  overflow: hidden;
+}
+
+.foodAvatar {
+  background-position: center center;
+  background-size: cover;
+}
