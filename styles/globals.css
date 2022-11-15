@@ -29,3 +29,13 @@ a {
   background-position: center center;
   background-size: cover;
 }
+
+.patternFood {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.debug {
+  border: 2px solid red;
+}
