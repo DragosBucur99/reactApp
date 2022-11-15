@@ -6,11 +6,11 @@ import { BsShuffle } from 'react-icons/bs'
 export default function FoodCard(props) {
     return (
         <div className="snap-start snap-always shrink-0 w-full rounded-lg h-full p-5 lg:shadow-md lg:h-full lg:flex-1" style={{backgroundColor: props.color}}>
-            <div className="relative flex flex-col items-center bg-violet-700 rounded-xl h-full pt-40 w-full">
-                <div className='foodAvatar absolute w-full h-40' style={{backgroundImage: "url('foodPattern_2.svg')", top: '0', left: '0'}}></div>
+            <div className="overflow-hidden relative flex flex-col items-center bg-violet-700 rounded-xl h-full w-full">
+                <div className='patternFood w-full h-40' style={{backgroundImage: "url('foodPattern_2.svg')"}}></div>
                 <div className="foodAvatar absolute bg-gray-200 h-40 w-40 rounded-full shadow-md"  style={{top: '5rem', backgroundImage: "url('foodrecipe.png')"}} />
                 <AiOutlineHeart className='absolute top-5 right-5 scale-150'/>
-                <div className="flex flex-col bg-violet-50 h-full w-full rounded-xl pt-24 pb-3 flex-1 px-5 justify-between" style={{borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem' }}>
+                <div className="flex flex-col bg-violet-50 h-full w-full rounded-xl pt-24 pb-10 flex-1 px-5 justify-between" style={{borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem' }}>
                         {/* Card Header -> Title + Hours&Calories */}
                         <div className='flex flex-col gap-5'>
                             <p className='text-center text-gray-800 text-2xl font-bold tracking-wide'>Caprese Salad</p>
