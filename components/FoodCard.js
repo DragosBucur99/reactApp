@@ -10,7 +10,7 @@ export default function FoodCard(props) {
                 <div className='patternFood w-full h-40' style={{backgroundImage: "url('foodPattern_2.svg')"}}></div>
                 <div className="foodAvatar absolute bg-gray-200 h-40 w-40 rounded-full shadow-md"  style={{top: '5rem', backgroundImage: "url('foodrecipe.png')"}} />
                 <AiOutlineHeart className='absolute top-5 right-5 scale-150'/>
-                <div className="flex flex-col bg-violet-50 h-full w-full rounded-xl pt-24 pb-10 flex-1 px-5 justify-between" style={{borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem' }}>
+                <div className="flex flex-col bg-violet-50 h-full w-full rounded-xl pt-24 pb-5 flex-1 px-5 justify-between" style={{borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem' }}>
                         {/* Card Header -> Title + Hours&Calories */}
                         <div className='flex flex-col gap-5'>
                             <p className='text-center text-gray-800 text-2xl font-bold tracking-wide'>Caprese Salad</p>
