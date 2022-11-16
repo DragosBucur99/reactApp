@@ -2,11 +2,40 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { FaBurn } from 'react-icons/fa'
 import { BsShuffle } from 'react-icons/bs'
+import { useState, useRef, useEffect } from "react"
+import { gsap } from "gsap"
+import Link from 'next/link'
 
 export default function FoodCard(props) {
+
+    const curtain = useRef()
+    const tl = useRef()
+    
+    const [click, setClick] = useState(false)
+
+    useEffect(() => {    
+    
+        tl.current = gsap.timeline({
+            paused: true,
+            yoyo: true,
+            repeat: 1
+        })
+    
+        tl.current.to(curtain.current, {top: "0%", duration: 1})
+      }, []);
+    
+    useEffect(() => {    
+        click ? tl.current.play() : tl.current.reverse()
+      }, [click]);
+
+
     return (
         <div className="snap-start snap-always shrink-0 w-full rounded-lg h-full p-5 lg:shadow-md lg:h-full lg:flex-1" style={{backgroundColor: props.color}}>
             <div className="overflow-hidden relative flex flex-col items-center bg-violet-700 rounded-xl h-full w-full">
+                <div className='flex flex-col items-center justify-center w-full h-full absolute left-0 z-10' ref={curtain} style={{top: '-100%'}}>
+                    <div className='w-full flex-1 bg-violet-700'></div>
+                    <img src="wave_1.svg" className='scale-150'></img>
+                </div>
                 <div className='patternFood w-full h-40' style={{backgroundImage: "url('foodPattern_2.svg')"}}></div>
                 <div className="foodAvatar absolute bg-gray-200 h-40 w-40 rounded-full shadow-md"  style={{top: '5rem', backgroundImage: "url('foodrecipe.png')"}} />
                 <AiOutlineHeart className='absolute top-5 right-5 scale-150'/>
@@ -30,8 +59,10 @@ export default function FoodCard(props) {
                         </div>
                         {/* Card Footer -> CTA Buttons */}
                         <div className='flex flex-col justify-center w-full text-gray-800 gap-2'>
-                            <button className='text-white rounded-xl p-2 bg-violet-700 tracking-wide hover:bg-violet-800'>View recipe</button>
-                            <div className='group font-semibold text-gray-500 text-sm w-full flex justify-center items-center gap-1 cursor-pointer hover:text-gray-800'>
+                            <Link href={"/recipe"}>
+                                <button className='text-white rounded-xl p-2 bg-violet-700 tracking-wide hover:bg-violet-800'>View recipe</button>
+                            </Link>
+                            <div className='group font-semibold text-gray-500 text-sm w-full flex justify-center items-center gap-1 cursor-pointer hover:text-gray-800' onClick={handleClick}>
                                 <span>...or SHUFFLE </span>
                                 <BsShuffle className='text-violet-500 font-bold group-hover:text-violet-800' />
                             </div>
@@ -40,6 +71,10 @@ export default function FoodCard(props) {
             </div>
         </div>
     )
+
+    function handleClick() {
+        setClick(!click)
+    }
 }
 
 
