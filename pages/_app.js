@@ -1,8 +1,8 @@
 import '../styles/globals.css'
 import { useEffect } from "react"
+import { AnimatePresence } from "framer-motion"
 
-
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
     //gets screen size - to fix mobile viewport height problem
     useEffect(() => {
       // only execute all the code below in client side
@@ -25,7 +25,11 @@ function MyApp({ Component, pageProps }) {
     }, []);
 
   return (
-      <Component {...pageProps} />
+    <>
+    <AnimatePresence initial={false} mode={'wait'}>
+      <Component key={router.pathname} {...pageProps} />
+    </AnimatePresence>
+    </>
   )
 }
 
