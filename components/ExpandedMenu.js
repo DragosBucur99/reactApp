@@ -5,7 +5,6 @@ import { gsap } from "gsap"
 export default function ExpandedMenu(props) {
 
     const toggle = props.toggle
-    const style = ""
     const tl = useRef(), ref = useRef(), contactRef = useRef(), dashbordRef = useRef(), logoutRef = useRef()
 
     useEffect(() => {    
