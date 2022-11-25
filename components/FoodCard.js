@@ -21,7 +21,7 @@ export default function FoodCard(props) {
             repeat: 1
         })
     
-        tl.current.to(curtain.current, {top: "0%", duration: 1})
+        tl.current.to(curtain.current, {top: "0%", duration: 0.7, ease: 'ease.out'})
       }, []);
     
     useEffect(() => {    
@@ -32,7 +32,7 @@ export default function FoodCard(props) {
     return (
         <div className="snap-start snap-always shrink-0 w-full rounded-lg h-full p-5 lg:shadow-md lg:h-full lg:flex-1" style={{backgroundColor: props.color}}>
             <div className="overflow-hidden relative flex flex-col items-center bg-violet-700 rounded-xl h-full w-full">
-                <div className='flex flex-col items-center justify-center w-full h-full absolute left-0 z-10' ref={curtain} style={{top: '-100%'}}>
+                <div className='flex flex-col items-center justify-center w-full h-full absolute left-0 z-10' ref={curtain} style={{top: '-200%'}}>
                     <div className='w-full flex-1 bg-violet-700'></div>
                     <img src="wave_1.svg" className='scale-150'></img>
                 </div>
