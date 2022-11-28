@@ -1,18 +1,22 @@
 import { useState, useRef, useEffect } from "react"
 import { gsap } from "gsap"
-import Datepicker from "react-tailwindcss-datepicker";
+import dayjs from "dayjs"
+import Calendar from "./Calendar"
 
 export default function TodoCard(props) {
-
     const [click, setClick] = useState(false)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [toDos, setToDos] = useState([])
+    const [calendarState, setCalendarState] = useState(false)
+    const [day, setDay] = useState(null)
+    const [month, setMonth] = useState('')
     const expendUp = useRef()
     const createTodo = useRef()
     const emptyTodoList = useRef()
     const titleInputRef = useRef()
     const descriptionInputRef = useRef()
+    const dateInputRef = useRef()
     const tl = useRef()
 
     useEffect(() => {    
@@ -30,32 +34,32 @@ export default function TodoCard(props) {
         click ? tl.current.play() : tl.current.reverse()
       }, [click]);
 
+    const sendDay = day => {
+        setDay(day)
+        console.log(day)
+    }
 
-    const [value, setValue] = useState({
-        startDate: null,
-        endDate: null
-    });
-    
-    const handleValueChange = (newValue) => {
-        console.log("newValue:", newValue);
-        setValue(newValue);
+    const sendMonth = month => {
+        setMonth(month)
+        console.log(month)
     }
 
     const handleSubmit = event => {
         // 👇️ prevent page refresh
         event.preventDefault();
-        // console.log('form submitted ✅');
-        // console.log("Title: ", title)
-        // console.log("Description: ", description)
+        console.log('form submitted ✅');
+        console.log(day)
+        console.log(month)
+        const date = day !== null ? `${day}-${month}-${dayjs().year()}` : ''
         titleInputRef.current.value = ''
         descriptionInputRef.current.value = ''
+
         setToDos(prev => {
-            return[...prev, title]
+            return[...prev, <div className="flex flex-col"><span>{title}</span><span>{description}</span><span>{date}</span></div>]
         })
-        // emptyTodoList.current.style.opacity = '100%'
-        // createTodo.current.style.display = 'none'
-        // emptyTodoList.current.style.display = 'flex'
+
         setClick(!click)
+        setDay(null)
         setTitle('')
         setDescription('')
       };
@@ -82,19 +86,22 @@ export default function TodoCard(props) {
                             ))}
                         </div>
                         <div className="hidescrollbar w-full overflow-y-auto px-5 flex-col gap-5 hidden flex flex-col justify-between" ref={createTodo}>
-                            <div className="flex flex-col gap-1">
-                                <label className="tracking-wide">Pick a date <span className="opacity-50 text-sm">(optional)</span></label>
-                                <Datepicker value={value} onChange={handleValueChange} primaryColor={"indigo"} asSingle={true} useRange={false} placeholder={"Due date"} />
-                            </div>
-                            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                            <form onSubmit={handleSubmit} className="relative flex flex-col gap-5">
+                                <div className="absolute w-full h-full left-0 bottom-0 top-0 z-10 rounded-xl overflow-hidden" onClick={handleCalendarState} style={{display: calendarState ? 'block': 'none'}}>
+                                    <Calendar sendDay={sendDay} sendMonth={sendMonth}/>
+                                </div>
                                 <div className="flex flex-col gap-5">
                                     <div className="flex flex-col gap-1">
+                                        <label for="date" className="tracking-wide">Due date (optional)</label>
+                                        <input type="text" id="date" autocomplete="off" ref={dateInputRef} onClick={handleCalendarState} placeholder={day !== null ? `${day}-${month}-${dayjs().year()}` : ''} className="cursor-pointer"></input>
+                                    </div>
+                                    <div className="flex flex-col gap-1">
                                         <label for="title" className="tracking-wide">Title</label>
-                                        <input type="text" id="title" onChange={e => setTitle(e.target.value)} required ref={titleInputRef}></input>
+                                        <input type="text" id="title" onChange={e => setTitle(e.target.value)} required autocomplete="off" ref={titleInputRef}></input>
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <label for="description" className="tracking-wide">Description</label>
-                                        <textarea type="text" id="description" rows="3" onChange={e => setDescription(e.target.value)} required ref={descriptionInputRef}></textarea>
+                                        <textarea type="text" id="description" rows="3" onChange={e => setDescription(e.target.value)} required autocomplete="off" ref={descriptionInputRef}></textarea>
                                     </div>
                                 </div>
                                 <button type="submit" className='text-white font-semibold rounded-xl p-2 bg-indigo-700 tracking-wide hover:bg-indigo-800'>Create to-do</button>
@@ -108,6 +115,10 @@ export default function TodoCard(props) {
 
     function handleClick() {
         setClick(!click)
+    }
+
+    function handleCalendarState() {
+         setCalendarState(!calendarState)
     }
 }
 
