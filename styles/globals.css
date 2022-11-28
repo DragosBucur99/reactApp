@@ -56,9 +56,10 @@ input[type=text] {
   outline: none;
   border-radius: 0.5rem;
   font-family: inherit;
+  height: 2.5rem;
 }
 
-textarea[type=text] {
+textarea[type=text], .dateInput {
   background-color: #1E293B;
   padding: 0.5rem;
   outline: none;
@@ -74,4 +75,8 @@ textarea[type=text] {
 .hidescrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+.dynamicWidth {
+  width: calc(100% / 7);
 }
