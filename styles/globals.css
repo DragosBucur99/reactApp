@@ -10,6 +10,7 @@ body {
   color: white;
   scroll-behavior: smooth;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 a {
@@ -51,10 +52,12 @@ label {
 }
 
 input[type=text] {
-  background-color: #1E293B;
+  /* background-color: #1E293B; */
+  background-color: transparent;
+  border-bottom: 1px solid rgb(99 102 241);
   padding: 0.5rem;
   outline: none;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
   font-family: inherit;
   height: 2.5rem;
 }
@@ -79,4 +82,8 @@ textarea[type=text], .dateInput {
 
 .dynamicWidth {
   width: calc(100% / 7);
+}
+
+.test {
+  border-left: 10px solid red;
 }
