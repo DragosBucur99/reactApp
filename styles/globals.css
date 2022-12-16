@@ -51,7 +51,7 @@ label {
   font-weight: 500;
 }
 
-input[type=text] {
+input[type=text], input[type=number] {
   /* background-color: #1E293B; */
   background-color: transparent;
   border-bottom: 1px solid rgb(99 102 241);
@@ -84,6 +84,6 @@ textarea[type=text], .dateInput {
   width: calc(100% / 7);
 }
 
-.test {
-  border-left: 10px solid red;
+.extendBorder {
+  border-bottom: 1px solid rgb(99 102 241);
 }
