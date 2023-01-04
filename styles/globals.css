@@ -95,3 +95,13 @@ textarea[type=text], .dateInput {
 @keyframes rotate {
   to { transform: rotate(360deg)}
 }
+
+.editableInput {
+  background-color: transparent;
+  outline: none;
+  border: 0 !important;
+  padding: 0 !important;
+  height: unset !important;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
