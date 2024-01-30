@@ -1,3 +1,0 @@
-[submodule "cirrus-test"]
-	path = cirrus-test
-	url = https://github.com/DragosBucur99/cirrus-test.git
