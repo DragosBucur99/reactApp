@@ -13,38 +13,51 @@ export default function FormNutrients({
   setLoader,
 }) {
   const unique_id = uuid();
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function getNutrients(food) {
     const result = await fetch(
       `https://api.edamam.com/api/nutrition-data?app_id=${API_ID}&app_key=${API_KEY}&nutrition-type=cooking&ingr=${value}%20g%20${food}`
     );
     const respJson = await result.json();
-    const meal = {
-      id: unique_id.slice(0, 8),
-      name: food,
-      amount: value,
-      calories: respJson.calories,
-      proteins: respJson.totalNutrients.PROCNT.quantity,
-      carbs: respJson.totalNutrients.CHOCDF.quantity,
-      fat: respJson.totalNutrients.FAT.quantity,
-      expanded: false,
-      deleteStatus: false,
-      editable: false,
-    };
+    if (Object.keys(respJson.totalNutrients).length === 0) {
+      throw new Error(`Couldn't find ${food}. Try something else e.g. 'pizza'`);
+    } else {
+      const meal = {
+        id: unique_id.slice(0, 8),
+        name: food,
+        amount: value,
+        calories: respJson.calories,
+        proteins: respJson.totalNutrients.PROCNT.quantity,
+        carbs: respJson.totalNutrients.CHOCDF.quantity,
+        fat: respJson.totalNutrients.FAT.quantity,
+        expanded: false,
+        deleteStatus: false,
+        editable: false,
+      };
 
-    setFoods((prev) => [
-      ...prev,
-      {
-        ...meal,
-      },
-    ]);
+      setFoods((prev) => [
+        ...prev,
+        {
+          ...meal,
+        },
+      ]);
+    }
   }
 
   const mealInput = useRef();
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     setLoader(!loader);
-    getNutrients(mealInput.current.value).then(() => setClick(!click));
+    try {
+      await getNutrients(mealInput.current.value);
+      setClick(!click);
+      setErrorMessage("");
+    } catch (error) {
+      console.error(error.message);
+      setErrorMessage(error.message);
+      setLoader(false);
+    }
   };
 
   const valueRef = useRef();
@@ -80,6 +93,7 @@ export default function FormNutrients({
         >
           Add meal
         </button>
+        <p className="text-center text-red-400 font-semibold">{errorMessage}</p>
       </form>
     </div>
   );
