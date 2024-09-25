@@ -21,6 +21,7 @@ export default function Priority({ priority, setPriority }) {
           className="w-full text-center p-5 shadow-md flex flex-col items-center gap-2 cursor-pointer border border-transparent hover:border-white"
           onClick={() => handleClick("low")}
           style={{ border: priority === "low" ? "1px solid white" : "" }}
+          data-cy="todo-low-priority"
         >
           <FcLowPriority style={{ fontSize: "2.5rem" }} />
           <span className="text-sm font-normal tracking-wide">Low</span>

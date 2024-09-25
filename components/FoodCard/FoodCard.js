@@ -91,8 +91,11 @@ export default function FoodCard(props) {
           </div>
           {/* Card Footer -> CTA Buttons */}
           <div className="flex w-full text-gray-800 gap-2 flex-col items-center">
-            <Link href={"/recipe"} className="w-full">
-              <button className="text-white rounded-xl p-2 bg-violet-700 tracking-wide w-full hover:bg-violet-800">
+            <Link href="/recipe" className="w-full">
+              <button
+                className="text-white rounded-xl p-2 bg-violet-700 tracking-wide w-full hover:bg-violet-800"
+                data-cy="recipe-cta-button"
+              >
                 View recipe
               </button>
             </Link>

@@ -53,6 +53,7 @@ export default function TodoCard(props) {
           <button
             className="h-16 font-bold tracking-wider"
             onClick={handleClick}
+            data-cy="todo-cta-button"
           >
             CREATE TASK
           </button>
