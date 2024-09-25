@@ -70,6 +70,7 @@ export default function NutrientsCard(props) {
             onClick={handleClick}
             style={{ display: click ? "none" : "" }}
             className="text-indigo-600"
+            data-cy="meal-cta-button"
           >
             Put some meat on your bones!
           </button>

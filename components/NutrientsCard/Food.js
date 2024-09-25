@@ -86,6 +86,7 @@ export default function Food({
       className="relative p-3 flex flex-col gap-3 bg-indigo-600 rounded-md shadow-md cursor-pointer border-2 border-transparent"
       onClick={handleClick}
       style={{ border: stateManager.style.border }}
+      data-cy="meal"
     >
       <div className="flex w-full justify-between">
         <div className="flex gap-1 items-center">

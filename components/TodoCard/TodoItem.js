@@ -58,6 +58,7 @@ export default function TodoItem({
       style={{
         borderLeft: priority === "default" ? "" : priorityStyle,
       }}
+      data-cy="todo"
     >
       <div className="flex justify-center items-center pr-5 flex-1">
         <RiCheckboxBlankCircleLine

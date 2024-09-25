@@ -115,6 +115,7 @@ export default function Form({ click, todos, setTodos, setClick }) {
             placeholder="What are you planning?"
             maxlength="30"
             required
+            data-cy="todo-input"
           ></input>
           <WordCounter wordCounter={wordCounter} />
         </div>
@@ -123,6 +124,7 @@ export default function Form({ click, todos, setTodos, setClick }) {
           <button
             type="submit"
             className="text-white font-semibold w-full rounded-xl p-2 bg-indigo-700 tracking-wide hover:bg-indigo-800"
+            data-cy="todo-create"
           >
             Create to-do
           </button>

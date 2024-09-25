@@ -77,6 +77,7 @@ export default function FormNutrients({
           placeholder="What have you eaten?"
           className="w-full"
           ref={mealInput}
+          data-cy="meal-input"
         />
         <input
           type="number"
@@ -90,6 +91,7 @@ export default function FormNutrients({
         <button
           type="submit"
           className="text-white font-semibold w-full rounded-xl p-2 bg-indigo-700 tracking-wide hover:bg-indigo-800"
+          data-cy="meal-add-button"
         >
           Add meal
         </button>
