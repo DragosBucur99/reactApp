@@ -56,6 +56,7 @@ export default function EditState({ editState, setFoods, foods }) {
         <button
           onClick={updateFoodAmount}
           className="bg-[#F3752B] py-1 px-2 text-center rounded-lg font-bold w-full"
+          data-cy="meal-menu-confirm-edit-btn"
         >
           EDIT
         </button>

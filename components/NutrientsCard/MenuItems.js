@@ -30,6 +30,7 @@ export default function MenuItems({
     >
       <div
         className="text-center flex justify-center items-center flex-col gap-1 cursor-pointer"
+        data-cy="meal-menu-add-btn"
         onClick={handleClick}
       >
         <MdLibraryAdd className="text-white text-xl" />
@@ -37,6 +38,7 @@ export default function MenuItems({
       </div>
       <div
         className="text-center flex justify-center items-center flex-col gap-1 cursor-pointer"
+        data-cy="meal-menu-edit-btn"
         onClick={handleEditClick}
       >
         <FiEdit2 className="text-white text-xl" />
@@ -44,6 +46,7 @@ export default function MenuItems({
       </div>
       <div
         className="text-center flex justify-center items-center flex-col gap-1 cursor-pointer"
+        data-cy="meal-menu-delete-btn"
         onClick={() => setDeleteState(!deleteState)}
       >
         <MdDeleteOutline className="text-white text-xl" />

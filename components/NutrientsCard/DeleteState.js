@@ -36,6 +36,7 @@ export default function DeleteState({
         <button
           onClick={handleDelete}
           className="bg-red-600 py-1 px-2 text-center rounded-lg font-bold w-full"
+          data-cy="meal-menu-confirm-delete-btn"
         >
           DELETE
         </button>

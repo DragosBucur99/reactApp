@@ -121,6 +121,7 @@ export default function Food({
               placeholder={amount}
               onChange={handleEditInput}
               className="w-1/3 border-0 bg-transparent"
+              data-cy="meal-new-amount-input"
             />
           </div>
         </div>

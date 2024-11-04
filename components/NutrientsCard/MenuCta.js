@@ -43,6 +43,7 @@ export default function MenuCta({
   return (
     <div
       className="p-2 cursor-pointer bg-indigo-700 rounded-full flex items-center justify-center shadow-md"
+      data-cy="meal-menu-cta"
       onClick={handleClick}
     >
       <div className="flex justify-center items-center min-w-[1.6rem] min-h-[1.6rem]">
