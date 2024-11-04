@@ -5,7 +5,8 @@ function DueDateInput({ onDateChange, reset, onErrorChange }) {
   const [error, setError] = useState("");
 
   // Regex to match DD/MM/YYYY format
-  const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d\d$/;
+  const dateRegex =
+    /^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[0-2])\/(19|20)\d\d$/;
 
   const handleChange = (e) => {
     const input = e.target.value;
