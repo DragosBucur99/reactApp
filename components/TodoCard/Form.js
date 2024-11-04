@@ -1,44 +1,41 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import dayjs from "dayjs";
-import Calendar from "./Calendar";
 import Priority from "./Priority";
 import WordCounter from "./WordCounter";
-import ResetCalendar from "./ResetCalendar";
 import { v4 as uuid } from "uuid";
 import { FcCancel } from "react-icons/fc";
+import DueDateInput from "./DueDateInput";
 
 export default function Form({ click, todos, setTodos, setClick }) {
-  const [currentDay, setCurrentDay] = useState("");
-  const [currentMonth, setCurrentMonth] = useState("");
-  const [calendarState, setCalendarState] = useState(true);
   const [priority, setPriority] = useState("default");
   const [wordCounter, setWordCounter] = useState(0);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [hasError, setHasError] = useState(false);
+  const [resetDateInput, setResetDateInput] = useState(false);
   const titleRef = useRef();
-  const dateRef = useRef();
   const unique_id = uuid();
 
   const tl = useRef();
   const ref = useRef();
 
-  const handleCalendarState = () => {
-    setCalendarState(!calendarState);
+  const handleDateChange = (newDate) => {
+    setSelectedDate(newDate);
+  };
+
+  const handleErrorChange = (errorStatus) => {
+    setHasError(errorStatus);
   };
 
   const handleCancelButton = () => {
     setClick(!click);
-    setCurrentDay("");
-    setCurrentMonth("");
+    setResetDateInput(true);
     titleRef.current.value = "";
-    dateRef.current.value = "";
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const todo = {
-      day: currentDay,
-      month: currentMonth,
-      date: dateRef.current.value,
+      date: selectedDate,
       title: titleRef.current.value,
       id: unique_id.slice(0, 8),
       priority: priority,
@@ -46,12 +43,10 @@ export default function Form({ click, todos, setTodos, setClick }) {
     };
     setTodos([todo, ...todos]);
     setClick(!click);
-    setCurrentDay("");
-    setCurrentMonth("");
+    setResetDateInput(true);
     setPriority("default");
     setWordCounter(0);
     titleRef.current.value = "";
-    dateRef.current.value = "";
   };
 
   useEffect(() => {
@@ -77,32 +72,12 @@ export default function Form({ click, todos, setTodos, setClick }) {
         className="flex flex-col h-full justify-between"
         onSubmit={handleFormSubmit}
       >
-        <div className="absolute left-0 top-0 bottom-0 z-10">
-          <Calendar
-            setCurrentDay={setCurrentDay}
-            setCurrentMonth={setCurrentMonth}
-            calendarState={calendarState}
-            setCalendarState={setCalendarState}
-          />
-        </div>
         <div className="w-full">
           <div className="flex">
-            <input
-              type="text"
-              ref={dateRef}
-              readOnly
-              onClick={handleCalendarState}
-              className="cursor-pointer w-full"
-              placeholder="Pick a due date (optional)"
-              value={
-                currentDay
-                  ? currentDay + "-" + currentMonth + "-" + dayjs().year()
-                  : ""
-              }
-            ></input>
-            <ResetCalendar
-              currentDay={currentDay}
-              setCurrentDay={setCurrentDay}
+            <DueDateInput
+              onDateChange={handleDateChange}
+              onErrorChange={handleErrorChange}
+              reset={resetDateInput}
             />
           </div>
         </div>
@@ -123,7 +98,12 @@ export default function Form({ click, todos, setTodos, setClick }) {
         <div className="w-full flex flex-col gap-2">
           <button
             type="submit"
-            className="text-white font-semibold w-full rounded-xl p-2 bg-indigo-700 tracking-wide hover:bg-indigo-800"
+            disabled={hasError}
+            className={`text-white font-semibold w-full rounded-xl p-2 tracking-wide ${
+              hasError
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-indigo-700 hover:bg-indigo-800"
+            }`}
             data-cy="todo-create"
           >
             Create to-do
